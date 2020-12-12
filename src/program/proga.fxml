@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="program.Controller">
+   <right>
+      <ToolBar orientation="VERTICAL" prefHeight="400.0" prefWidth="75.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button fx:id="btnCreate" mnemonicParsing="false" prefHeight="34.0" prefWidth="66.0" text="Create" />
+            <Button fx:id="btnRun" mnemonicParsing="false" prefHeight="30.0" prefWidth="68.0" text="Run" />
+            <Button fx:id="btnStop" mnemonicParsing="false" prefHeight="30.0" prefWidth="68.0" text="Stop" />
+            <ToggleButton fx:id="btnPause" mnemonicParsing="false" prefHeight="34.0" prefWidth="68.0" text="Pause" />
+            <Button fx:id="btnNext" mnemonicParsing="false" prefHeight="34.0" prefWidth="68.0" text="Next" />
+        </items>
+      </ToolBar>
+   </right>
+   <left>
+      <TabPane fx:id="queuesPane" prefHeight="400.0" prefWidth="264.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab fx:id="tabSettings" text="Settings">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane prefHeight="369.0" prefWidth="264.0">
+                           <children>
+                              <Slider fx:id="sldTps" blockIncrement="1.0" layoutX="78.0" layoutY="23.0" max="10.0" min="1.0" prefHeight="14.0" prefWidth="147.0" value="1.0" />
+                              <Label layoutX="20.0" layoutY="13.0" prefHeight="34.0" prefWidth="30.0" text="TPS=" />
+                              <Label fx:id="lblTps" layoutX="50.0" layoutY="16.0" prefHeight="29.0" prefWidth="32.0" text="1" />
+                              <Slider fx:id="sldErrors" layoutX="14.0" layoutY="124.0" max="1000.0" min="600.0" prefHeight="14.0" prefWidth="147.0" value="600.0" />
+                              <Label layoutX="27.0" layoutY="106.0" prefHeight="18.0" prefWidth="97.0" text="Errors frequency:" />
+                              <Label fx:id="lblErrors" layoutX="119.0" layoutY="106.0" prefHeight="18.0" prefWidth="65.0" text="600" />
+                              <CheckBox fx:id="chkGeneration" layoutX="27.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" text="Prosesses generator" />
+                              <CheckBox fx:id="chkErrors" layoutX="27.0" layoutY="72.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" text="Errors generator" />
+                              <TextField fx:id="txtMemory" layoutX="20.0" layoutY="185.0" prefHeight="26.0" prefWidth="73.0" text="2048" />
+                              <TextField fx:id="txtResources" layoutX="20.0" layoutY="245.0" prefHeight="26.0" prefWidth="44.0" text="3" />
+                              <Label layoutX="17.0" layoutY="227.0" prefHeight="18.0" prefWidth="97.0" text="Resources" />
+                              <Label layoutX="17.0" layoutY="166.0" prefHeight="18.0" prefWidth="97.0" text="Memory" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Statistics">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" text="System time:" />
+                        <Label layoutX="14.0" layoutY="37.0" text="Tasks finished:" />
+                        <Label layoutX="14.0" layoutY="61.0" text="Tasks rejected:" />
+                        <Label layoutX="14.0" layoutY="84.0" text="Tasks total:" />
+                        <Label layoutX="14.0" layoutY="107.0" text="CPU queue size:" />
+                        <Label layoutX="14.0" layoutY="130.0" text="CPU inactivity:" />
+                        <Label layoutX="14.0" layoutY="154.0" text="Memory usage:" />
+                        <Label fx:id="lblTicks" layoutX="105.0" layoutY="14.0" text="0" />
+                        <Label fx:id="lblFinished" layoutX="105.0" layoutY="37.0" text="0" />
+                        <Label fx:id="lblRejected" layoutX="105.0" layoutY="61.0" text="0" />
+                        <Label fx:id="lblTotal" layoutX="105.0" layoutY="84.0" text="0" />
+                        <Label fx:id="lblQueue" layoutX="105.0" layoutY="107.0" text="0" />
+                        <Label fx:id="lblInactivity" layoutX="105.0" layoutY="130.0" text="0" />
+                        <Label fx:id="lblMemory" layoutX="105.0" layoutY="154.0" text="0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </left>
+   <center>
+      <TabPane prefHeight="400.0" prefWidth="226.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab fx:id="tabRunning" text="Running">
+               <content>
+                  <BorderPane fx:id="runningPane" prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <ToolBar fx:id="barResources" prefHeight="51.0" prefWidth="264.0" BorderPane.alignment="CENTER" />
+                     </top>
+                  </BorderPane>
+               </content>
+            </Tab>
+          <Tab fx:id="tabFinished" text="Finished">
+               <content>
+                  <TableView prefHeight="200.0" prefWidth="200.0">
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy></TableView>
+               </content>
+            </Tab>
+          <Tab fx:id="tabRejected" text="Rejected">
+               <content>
+                  <TableView prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab text="All">
+               <content>
+                  <TableView fx:id="tblResources" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
