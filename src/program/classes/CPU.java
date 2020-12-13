@@ -33,8 +33,6 @@ public class CPU implements ITickNotifier {
     public boolean execProcess(Process process) {
         Core core = getAvailableCore();
         if (core != null) {
-            //System.out.println(process.toString() + " running on " + core);
-
             core.execProcess(process);
             return true;
         }

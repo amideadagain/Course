@@ -50,8 +50,6 @@ public class TaskScheduler implements ITickNotifier {
                 }
             }
         }
-
-        //random task scheduling
         if (Configuration.randomProcessGenerationEnabled()) {
             if (random.nextInt(10) == 0) {
                 scheduleRandom();
@@ -69,8 +67,6 @@ public class TaskScheduler implements ITickNotifier {
     public boolean scheduleTask(Process task) {
         //re-add the task from resource queue to cpu queue
         if (task.getState() == Process.State.WAITING) {
-            //System.out.println("Process " + task.getName() + " (id:" + task.getId() + ") has been re-added to CPU queue");
-
             int additionalTime = task.getTimeRequired() - task.getBurstTime();
             additionalTime = Math.floorDiv(additionalTime, 100) * random.nextInt(16) + 5;
             task.increaseRequiredTime(additionalTime);
@@ -100,7 +96,6 @@ public class TaskScheduler implements ITickNotifier {
         task.setLocationInMemory(memory);
         processQueue.push(task);
         task.setState(Process.State.READY);
-        //Main.guiController.updateTable(Controller.Tables.RUNNING);
         Main.guiController.updateMemoryUsage();
 
         return true;

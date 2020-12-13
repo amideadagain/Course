@@ -88,13 +88,11 @@ public class Main extends Application {
         m_pause = value;
     }
 
-    /*--Cross-Thread methods--*/
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("proga.fxml"));
         Parent root = loader.load();
-        primaryStage.setTitle("Course Work");
+        primaryStage.setTitle("Finally");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.setResizable(false);
 

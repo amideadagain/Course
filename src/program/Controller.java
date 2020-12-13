@@ -21,23 +21,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Controller {
-    /*--Panes--*/
     @FXML
     TabPane queuesPane;
     @FXML
     BorderPane runningPane;
-
-    /*--Tabs--*/
     @FXML
     Tab tabRejected;
     @FXML
     Tab tabFinished;
-
-    /*--ToolBars--*/
     @FXML
     ToolBar barResources;
-
-    /*--Control Buttons--*/
     @FXML
     ToggleButton btnPause;
     @FXML
@@ -48,39 +41,27 @@ public class Controller {
     Button btnStop;
     @FXML
     Button btnCreate;
-
-    /*--Initial Values settings fields--*/
     @FXML
     TextField txtMemory;
     @FXML
     TextField txtResources;
-
-    /*--Sliders--*/
     @FXML
     Slider sldTps;
     @FXML
     Slider sldErrors;
-
-    /*--Labels--*/
     @FXML
     Label lblTps;
     @FXML
     Label lblErrors;
-
-    /*--Checkboxes--*/
     @FXML
     CheckBox chkErrors;
     @FXML
     CheckBox chkGeneration;
-
-    /*--Tables--*/
     @FXML
     TableView tblResources;
     TableView tblRunning;
     TableView tblRejected;
     TableView tblFinished;
-
-    /*--Experiment Info--*/
     @FXML
     Label lblTicks;
     @FXML
@@ -136,7 +117,7 @@ public class Controller {
         tblColStatus.setCellValueFactory(new PropertyValueFactory<>("state"));
         tbl.getColumns().add(tblColStatus);
 
-        tblColMemory = new TableColumn<>("Memory Usage");
+        tblColMemory = new TableColumn<>("Memory");
         tblColMemory.setCellValueFactory(new PropertyValueFactory<>("memoryUsage"));
         tbl.getColumns().add(tblColMemory);
 
@@ -158,7 +139,7 @@ public class Controller {
         tblColName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tbl.getColumns().add(tblColName);
 
-        tblColMemory = new TableColumn<>("Memory Usage");
+        tblColMemory = new TableColumn<>("Memory");
         tblColMemory.setCellValueFactory(new PropertyValueFactory<>("memoryUsage"));
         tbl.getColumns().add(tblColMemory);
 
@@ -182,11 +163,11 @@ public class Controller {
         tblColName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tbl.getColumns().add(tblColName);
 
-        tblColMemory = new TableColumn<>("Memory Usage");
+        tblColMemory = new TableColumn<>("Memory");
         tblColMemory.setCellValueFactory(new PropertyValueFactory<>("memoryUsage"));
         tbl.getColumns().add(tblColMemory);
 
-        tblColTime = new TableColumn<>("Run Time");
+        tblColTime = new TableColumn<>("Runtime");
         tblColTime.setCellValueFactory(new PropertyValueFactory<>("burstTime"));
         tbl.getColumns().add(tblColTime);
 
@@ -330,9 +311,9 @@ public class Controller {
 
     private void openCreateProcessWindow() {
         TextInputDialog dialog = new TextInputDialog("New Process");
-        dialog.setTitle("Creating New Process");
-        dialog.setHeaderText("Enter the name of a new process.\nUse only letters, numbers, '-' and '_'");
-        dialog.setContentText("Process name:");
+        dialog.setTitle("New Process");
+        dialog.setHeaderText("Enter the name");
+        dialog.setContentText("Name:");
 
         Button btnOk = (Button) dialog.getDialogPane().lookupButton(ButtonType.OK);
         Button btnCancel = (Button) dialog.getDialogPane().lookupButton(ButtonType.CANCEL);
@@ -509,11 +490,11 @@ public class Controller {
         tblColName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tblResources.getColumns().add(tblColName);
 
-        tblColMemory = new TableColumn<>("Memory Usage");
+        tblColMemory = new TableColumn<>("Memory");
         tblColMemory.setCellValueFactory(new PropertyValueFactory<>("memoryUsage"));
         tblResources.getColumns().add(tblColMemory);
 
-        tblColTime = new TableColumn<>("Run Time");
+        tblColTime = new TableColumn<>("Runtime");
         tblColTime.setCellValueFactory(new PropertyValueFactory<>("burstTime"));
         tblResources.getColumns().add(tblColTime);
 

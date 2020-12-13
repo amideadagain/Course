@@ -9,7 +9,6 @@ public class Configuration {
     private static int resourcesCount = 3;    /*3 < m < 5*/
     private static int clockTps = 1;
     private static boolean generateRandomProcesses = true;
-    //one tick of <value> can terminate the process
     private static int processTerminationChance = 800;
     private static boolean generateErrors = true;
 
