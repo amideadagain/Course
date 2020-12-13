@@ -27,6 +27,9 @@ public class Resource implements ITickNotifier {
         m_status = Status.READY;
     }
 
+    /**
+     * обрабатываем процессы в очереди для ресурса
+     */
     @Override
     public void tick(int time) {
         if (m_queue.isEmpty()) return;
@@ -49,11 +52,17 @@ public class Resource implements ITickNotifier {
         Main.guiController.updateTable(Controller.Tables.RESOURCES);
     }
 
+    /**
+     * запланировать выполнение процесса на ресурсе
+     */
     public void scheduleProcess(Process process) {
         process.setState(Process.State.WAITING);
         m_queue.add(process);
     }
 
+    /**
+     * пытаться установить текущий процесс для выполнения
+     */
     private boolean execProcess(Process process) {
         if (m_status == Status.BUSY || process == null) return false;
 

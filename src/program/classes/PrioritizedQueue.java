@@ -14,6 +14,9 @@ public class PrioritizedQueue {
         }
     }
 
+    /**
+     * добавить процесс в очередь
+     */
     public boolean push(Process process) {
         int priority = process.getPriority();
         if (priority < m_queue.size()) {
@@ -24,6 +27,9 @@ public class PrioritizedQueue {
         return false;
     }
 
+    /**
+     * взять самый приоритетный процесс
+     */
     public Process pop() {
         for (Queue<Process> q : m_queue) {
             if (!q.isEmpty()) {
@@ -33,6 +39,9 @@ public class PrioritizedQueue {
         return null;
     }
 
+    /**
+     * посмотреть самый приоритетный процесс
+     */
     public Process peek() {
         for (Queue<Process> q : m_queue) {
             if (!q.isEmpty()) {

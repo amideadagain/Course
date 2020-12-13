@@ -17,6 +17,9 @@ public class CPU implements ITickNotifier {
         }
     }
 
+    /**
+     * ведём статистику простоя
+     */
     @Override
     public void tick(int time) {
         int freeCores = 0;
@@ -30,6 +33,9 @@ public class CPU implements ITickNotifier {
         }
     }
 
+    /**
+     * пытаться распределить процесс на выполнения в свободные ядра
+     */
     public boolean execProcess(Process process) {
         Core core = getAvailableCore();
         if (core != null) {
@@ -67,6 +73,9 @@ public class CPU implements ITickNotifier {
         return null;
     }
 
+    /**
+     * найти индекс ядра с процессом чей приоритет нижайший
+     */
     public int getLowPrioCoreIndx() {
         int lowestPriorityIndex = 0;
         for (int i = 1; i < m_cores.length; i++) {

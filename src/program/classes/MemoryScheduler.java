@@ -15,6 +15,9 @@ public class MemoryScheduler {
         m_memoryBlocks = new ArrayList<>();
     }
 
+    /**
+     * алоцировать новый блок памяти
+     */
     public MemoryBlock aloc(int size) {
         if (size > m_accessibleMemory) return null;
 
@@ -27,6 +30,9 @@ public class MemoryScheduler {
         return null;
     }
 
+    /**
+     * освободить блок памяти
+     */
     public void del(MemoryBlock block) {
         if (block == null) return;
         m_memoryBlocks.remove(block);
@@ -68,6 +74,9 @@ public class MemoryScheduler {
         return -1;
     }
 
+    /**
+     * индексация блока памяти для того что бы заблокировать его и избежать пересечений
+     */
     private boolean indexBlock(MemoryBlock block) {
         if (block == null) return false;
         return m_memoryBlocks.add(block);

@@ -35,6 +35,9 @@ public class TaskScheduler implements ITickNotifier {
         Main.guiController.updateMemoryUsage();
     }
 
+    /**
+     * распределяем процессы с очереди в процессор, генерируем новые процессы
+     */
     @Override
     public void tick(int time) {
         Process nextProcess = processQueue.peek();

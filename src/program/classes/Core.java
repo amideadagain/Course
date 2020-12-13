@@ -17,6 +17,11 @@ public class Core implements ITickNotifier {
         this.m_cpu = parent;
     }
 
+    /**
+     * если есть установленый процесс - выполнять его
+     * в некоторой вероятностью отправить на выполнение в ресурс
+     * и/или симулировать исключение
+     */
     @Override
     public void tick(int time) {
         if (m_currentProcess == null) return;
@@ -49,6 +54,10 @@ public class Core implements ITickNotifier {
         }
     }
 
+    /**
+     * назначить процесс для выполнения
+     * @param process
+     */
     public void execProcess(Process process) {
         m_currentProcess = process;
         m_currentProcess.setResource("CPU");
@@ -57,6 +66,9 @@ public class Core implements ITickNotifier {
         Main.guiController.updateTable(Controller.Tables.RESOURCES);
     }
 
+    /**
+     * завершить процесс
+     */
     private void stopProcess() {
         if (m_currentProcess.getBurstTime() < m_currentProcess.getTimeRequired()) {
             m_currentProcess.setState(Process.State.TERMINATED);
@@ -67,12 +79,18 @@ public class Core implements ITickNotifier {
         m_busy = false;
     }
 
+    /**
+     * завершить процесс
+     */
     public void stopProcess(String reason) {
         m_currentProcess.setInterruptionReason(reason);
         m_currentProcess.setResource("");
         stopProcess();
     }
 
+    /**
+     * приостановить выполнение текущего процесса и начать другой
+     */
     public void switchExecProcess(Process newProcess) {
         m_currentProcess.setState(Process.State.READY);
         Main.getTaskScheduler().scheduleTask(m_currentProcess);

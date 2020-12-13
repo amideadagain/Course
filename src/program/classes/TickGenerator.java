@@ -25,6 +25,9 @@ public class TickGenerator extends Thread {
         attachedComponents.add(component);
     }
 
+    /**
+     * генерируем тики с равными промежутками времени
+     */
     @Override
     public void run() {
         running = true;
